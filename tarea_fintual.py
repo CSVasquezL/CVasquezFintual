@@ -59,6 +59,10 @@ class Portfolio:
             print("¡Error! Ingresa un formato de fechas correcto (YYYY-MM-DD)")
             return False
 
+        if start_date > end_date:
+            print("La fecha de inicio no puede ser posterior a la fecha de término de la consulta")
+            return False
+
         start_prices = []
         end_prices = []
 
@@ -88,6 +92,10 @@ class Portfolio:
             end_date = pd.to_datetime(end_date,format='%Y-%m-%d', errors='raise')
         except:
             print("¡Error! Ingresa un formato de fechas correcto (YYYY-MM-DD)")
+            return False
+
+        if start_date > end_date:
+            print("La fecha de inicio no puede ser posterior a la fecha de término de la consulta")
             return False
             
         start_prices = []
