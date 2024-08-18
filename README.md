@@ -8,7 +8,7 @@ Este proyecto ha sido desarrollado en Python y tiene como objetivo implementar u
 - portfolio.csv: Archivo CSV de ejemplo con datos históricos de precios de las acciones.
 - requirements.txt: Lista de las dependencias necesarias para ejecutar el proyecto.
 ## Requisitos
-Para ejecutar este proyecto, necesitas tener instalado Python 3.6 o superior. También puedes instalar las dependencias necesarias utilizando el archivo requirements.txt.
+Para ejecutar este proyecto, se necesita Python 3.6 o superior. Las librerías necesarias para la ejecución están en el archivo "requirements.txt".
 
 ## Uso
 ### Inicialización del Portafolio:
@@ -17,6 +17,8 @@ El portafolio se inicializa automáticamente al instanciar la clase Portfolio, c
 El método Profit calcula la ganancia obtenida entre dos fechas específicas.
 ### Cálculo de Retorno Anualizado (Annualized_Return)
 El método Annualized_Return calcula el retorno anualizado del portafolio entre dos fechas específicas.
+### Pruebas
+Al final del archivo .py hay algunos ejemplos para probar la clase Portfolio y sus métodos.
 
 ## Notas adicionales
 - Supuestos: La clase asume que el archivo CSV tiene un formato con fechas como índice y precios de las acciones del portafolio en las columnas.
@@ -25,6 +27,6 @@ El método Annualized_Return calcula el retorno anualizado del portafolio entre 
 ## Contacto
 ¡Muchas gracias por considerar mi postulación! Dejo mi correo para establecer contacto: [carolinavasquez@uc.cl].
 
-***Carolina Vásquez L.***
+***Carolina Vásquez L.*** - 
 *18 de agosto de 2024.*
 

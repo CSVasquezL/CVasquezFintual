@@ -124,3 +124,20 @@ class Portfolio:
         retorno = ((1+(profit/portfolio_value_start))**(360/d.days))-1
 
         return f"El retorno anualizado entre {start_date.date()} y {end_date.date()} fue de {retorno * 100:.2f}%"
+    
+## Ejemplos de prueba
+
+port = Portfolio()
+port.dataframe
+port.stocks
+print(port.stocks.items)
+
+# Ejemplo con fechas válidas
+port.Profit("2020-10-26","2023-10-26")
+
+# Ejemplo con fechas inválidas
+port.Profit("2020-10-26","2024-10-26") ## Aquí no existen datos para la fecha final
+port.Annualized_Return("26-10-2020","2023-10-26") ## Aquí está mal escrito el formato de la primera fecha
+port.Profit("2020-10-26","2019-10-26") ## Aquí la fecha inicial es posterior a la final
+port1 = Portfolio()
+port1.Profit("2020-10-","2020-10-26") ## Aquí está mal ingresada la fecha inicial
