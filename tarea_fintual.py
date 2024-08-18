@@ -9,28 +9,24 @@ class Portfolio:
     Portfolio, by Caro
     
     Esta clase crea un objeto con atributos interesantes para un portafolio de acciones.
-    * Primero es importante tener un portafolio en un csv llamado "portfolio.csv"
-    * El archivo tiene series de tiempo para los precios de las acciones
+    * Primero es importante tener un portafolio en un csv llamado "portfolio.csv".
+    * El archivo tiene series de tiempo para los precios de las acciones.
     
     Atributos:
-    - stocks: crea un diccionario con las acciones del portafolio
+    - stocks: crea un diccionario con las series de tiempo de acciones del portafolio
+    - dataframe: crea un dataframe para el portafolio.
     
     Métodos:
     - Profit: entrega la ganancia obtenida entre dos fechas del portafolio. Requiere una fecha inicial y una fecha final.
     - Annualized_Return: entrega el retorno anualizado entre dos fechas. Requiere una fecha inicial y una fecha final.
     
-    """
+    """   
     
-
-    
-    ## Carga del archivo del portafolio
-   
-    
-    ## Creación del portafolio
+    ## Paso 1: Creación del portafolio como dataframe
     def __init__(self):
         
         file="portfolio.csv"
-    
+        ## Carga el archivo, convierte los valores a un formato correcto
         try:
             df = pd.read_csv(file, sep=';', index_col=0, parse_dates=True, dayfirst=True)
             price_columns = [col for col in df.columns if col != 'Date']
@@ -40,18 +36,18 @@ class Portfolio:
         except:
             print("¡Ha ocurrido un error! Archivo no encontrado")
             return False
-
+        ## Guarda los datos como dataframe
         self.dataframe = df
-        
+        ## Crea un diccionario para guardar las series de tiempo
         self.stocks = {}
-        
+        ## Agrega las series de precios al diccionario
         for i, column in enumerate(df.columns, start=1):  
             self.stocks[f'stock{i}'] = df[column]
             
             
-  
+    ## Paso 2: Método Profit. Obtiene la ganancia entre dos fechas.
     def Profit(self, start_date, end_date):
-        
+        ## Valida el formato de las fechas introducidas:
         try:
             start_date = pd.to_datetime(start_date,format='%Y-%m-%d', errors='raise')
             end_date = pd.to_datetime(end_date,format='%Y-%m-%d', errors='raise')
@@ -60,9 +56,9 @@ class Portfolio:
             return False
 
         if start_date > end_date:
-            print("La fecha de inicio no puede ser posterior a la fecha de término de la consulta")
+            print("¡Error! La fecha inicial no puede ser posterior a la fecha final")
             return False
-
+        ## Se guardan los precios para realizar la operación
         start_prices = []
         end_prices = []
 
@@ -77,16 +73,18 @@ class Portfolio:
                 print(f"¡Error! Faltan datos para {nombre} en las fechas proporcionadas.")
                 return False
 
-        # Calcular el valor total del portafolio al inicio y al final
+        ## Calcula el valor total del portafolio en la fecha inicial y final
         portfolio_value_start = sum(start_prices)
         portfolio_value_end = sum(end_prices)
 
-        # Calcular el profit
+        ## Calcula la ganancia
         profit = portfolio_value_end - portfolio_value_start
 
         return f"La ganancia entre {start_date.date()} y {end_date.date()} fue de USD {profit:.2f}"
     
+    ## Paso 3: Método del retorno anualizado. Obtiene el retorno anualizado del portafolio entre dos fechas.
     def Annualized_Return(self, start_date, end_date):
+        
         try:
             start_date = pd.to_datetime(start_date,format='%Y-%m-%d', errors='raise')
             end_date = pd.to_datetime(end_date,format='%Y-%m-%d', errors='raise')
@@ -95,7 +93,7 @@ class Portfolio:
             return False
 
         if start_date > end_date:
-            print("La fecha de inicio no puede ser posterior a la fecha de término de la consulta")
+            print("¡Error! La fecha inicial no puede ser posterior a la fecha final")
             return False
             
         start_prices = []
@@ -112,16 +110,17 @@ class Portfolio:
                 print(f"¡Error! Faltan datos para {nombre} en las fechas proporcionadas.")
                 return False
 
-        # Calcular el valor total del portafolio al inicio y al final
+        ## Calcula el valor total del portafolio en la fecha inicial y final
         portfolio_value_start = sum(start_prices)
         portfolio_value_end = sum(end_prices)
 
-        # Calcular el profit
+        ## Calcula la ganancia
         profit = portfolio_value_end - portfolio_value_start
         
+        ## Obtiene la cantidad de días entre ambas fechas para anualizar
         d = end_date - start_date
-        #return d.days
-                
+        
+        ## Retorno anualizado
         retorno = ((1+(profit/portfolio_value_start))**(360/d.days))-1
 
         return f"El retorno anualizado entre {start_date.date()} y {end_date.date()} fue de {retorno * 100:.2f}%"
