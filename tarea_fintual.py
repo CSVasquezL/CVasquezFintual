@@ -139,6 +139,7 @@ if __name__ == "__main__":
 
     # Ejemplo con fechas válidas
     profit = port.Profit("2020-10-26","2023-10-26")
+    profit = port.Annualized_Return("2020-10-26","2023-10-26")
 
     # Ejemplo con fechas inválidas
     profit = port.Profit("2020-10-26","2024-10-26") ## Aquí no existen datos para la fecha final
