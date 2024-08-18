@@ -80,7 +80,9 @@ class Portfolio:
         ## Calcula la ganancia
         profit = portfolio_value_end - portfolio_value_start
 
-        return f"La ganancia entre {start_date.date()} y {end_date.date()} fue de USD {profit:.2f}"
+        print(f"La ganancia entre {start_date.date()} y {end_date.date()} fue de USD {profit:.2f}")
+
+        return profit
     
     ## Paso 3: Método del retorno anualizado. Obtiene el retorno anualizado del portafolio entre dos fechas.
     def Annualized_Return(self, start_date, end_date):
@@ -123,17 +125,20 @@ class Portfolio:
         ## Retorno anualizado
         retorno = ((1+(profit/portfolio_value_start))**(360/d.days))-1
 
-        return f"El retorno anualizado entre {start_date.date()} y {end_date.date()} fue de {retorno * 100:.2f}%"
+        print(f"El retorno anualizado entre {start_date.date()} y {end_date.date()} fue de {retorno * 100:.2f}%")
+
+        return retorno
     
 ## Ejemplos de prueba
 
 port = Portfolio()
-port.dataframe
-port.stocks
-print(port.stocks.items())
+#port.dataframe
+#port.stocks
+#print(port.stocks.items())
 
 # Ejemplo con fechas válidas
-port.Profit("2020-10-26","2023-10-26")
+retorno = port.Profit("2020-10-26","2023-10-26")
+print(a)
 
 # Ejemplo con fechas inválidas
 port.Profit("2020-10-26","2024-10-26") ## Aquí no existen datos para la fecha final
