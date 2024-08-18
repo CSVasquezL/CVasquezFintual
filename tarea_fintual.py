@@ -131,18 +131,18 @@ class Portfolio:
     
 ## Ejemplos de prueba
 
-port = Portfolio()
-#port.dataframe
-#port.stocks
-#print(port.stocks.items())
+if __name__ == "__main__":
 
-# Ejemplo con fechas válidas
-retorno = port.Profit("2020-10-26","2023-10-26")
-print(a)
+    port = Portfolio()
+    #port.dataframe
+    #port.stocks
+    #print(port.stocks.items())
 
-# Ejemplo con fechas inválidas
-port.Profit("2020-10-26","2024-10-26") ## Aquí no existen datos para la fecha final
-port.Annualized_Return("26-10-2020","2023-10-26") ## Aquí está mal escrito el formato de la primera fecha
-port.Profit("2020-10-26","2019-10-26") ## Aquí la fecha inicial es posterior a la final
-port1 = Portfolio()
-port1.Profit("2020-10-","2020-10-26") ## Aquí está mal ingresada la fecha inicial
+    # Ejemplo con fechas válidas
+    profit = port.Profit("2020-10-26","2023-10-26")
+
+    # Ejemplo con fechas inválidas
+    profit = port.Profit("2020-10-26","2024-10-26") ## Aquí no existen datos para la fecha final
+    retorno = port.Annualized_Return("26-10-2020","2023-10-26") ## Aquí está mal escrito el formato de la primera fecha
+    profit = port.Profit("2020-10-26","2019-10-26") ## Aquí la fecha inicial es posterior a la final
+    profit = port.Profit("2020-10-","2020-10-26") ## Aquí está mal ingresada la fecha inicial
