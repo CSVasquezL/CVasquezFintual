@@ -1,5 +1,4 @@
 ## Inicialización de librerías para la clase
-import os
 import pandas as pd
 
     
