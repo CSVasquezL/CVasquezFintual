@@ -10,6 +10,10 @@ Este proyecto ha sido desarrollado en Python y tiene como objetivo implementar u
 ## Requisitos
 Para ejecutar este proyecto, se necesita Python 3.6 o superior. Las librerías necesarias para la ejecución están en el archivo "requirements.txt".
 
+```bash
+pip install -r requirements.txt
+```
+
 ## Uso
 ### Inicialización del Portafolio:
 El portafolio se inicializa automáticamente al instanciar la clase Portfolio, cargando los datos desde un archivo CSV. 
@@ -24,7 +28,7 @@ Al final del archivo .py hay algunos ejemplos para probar la clase Portfolio y s
 - Supuestos: La clase asume que el archivo CSV tiene un formato con fechas como índice y precios de las acciones del portafolio en las columnas.
 - El archivo CSV de ejemplo contiene la información histórica (5 años) para las acciones de GameStop (GME), Coca-Cola (KO) y Tesla (TSLA). Los datos fueron obtenidos de Yahoo! Finance.
 
-## Contacto
+## Agradecimientos
 ¡Muchas gracias por considerar mi postulación! Dejo mi correo para establecer contacto: [carolinavasquez@uc.cl].
 
 ***Carolina Vásquez L.*** - 
