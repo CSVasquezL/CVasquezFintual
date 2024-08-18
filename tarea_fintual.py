@@ -130,7 +130,7 @@ class Portfolio:
 port = Portfolio()
 port.dataframe
 port.stocks
-print(port.stocks.items)
+print(port.stocks.items())
 
 # Ejemplo con fechas válidas
 port.Profit("2020-10-26","2023-10-26")
